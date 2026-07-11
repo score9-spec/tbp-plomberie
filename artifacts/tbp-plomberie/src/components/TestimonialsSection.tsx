@@ -6,37 +6,37 @@ const testimonials = [
   {
     name: "Marie-Claire D.",
     location: "Périgueux",
-    text: "Intervention extrêmement rapide un dimanche matin pour une fuite importante sous l'évier de la cuisine. Arrivée en moins de 45 minutes, le problème réglé en une heure. Le plombier a été professionnel, rassurant, et le tarif était annoncé d'avance sans mauvaise surprise. Je recommande les yeux fermés à toute ma famille.",
+    text: "J'avais une grosse fuite sous l'évier un dimanche matin, je paniquais complètement. Il est arrivé en moins d'une heure, très calme, il a tout réglé rapidement. Le prix était honnête et annoncé avant de commencer. Je ne m'y connais pas du tout en plomberie mais il a bien pris le temps de m'expliquer ce qu'il faisait. Super expérience.",
     rating: 5,
   },
   {
     name: "Thomas B.",
     location: "Bergerac",
-    text: "Rénovation complète de mon tableau électrique mis aux normes NF C 15-100, plus installation d'une borne de recharge pour ma voiture électrique. Travail impeccable, chantier propre, câblage soigné. De très bons conseils sur les aides disponibles (CEE). Un vrai artisan sérieux, pas un simple dépanneur.",
+    text: "J'avais besoin de refaire le tableau électrique de ma maison et d'installer une prise pour recharger ma voiture dans le garage. Tout s'est très bien passé, il est venu faire un état des lieux, m'a donné un devis clair, et le chantier a été propre du début à la fin. Il m'a aussi conseillé pour les aides auxquelles j'avais droit, ce que j'appréciais vraiment.",
     rating: 5,
   },
   {
     name: "Jean-Pierre M.",
     location: "Sarlat",
-    text: "Mise en place d'une pompe à chaleur air/eau avec TBP pour remplacer ma vieille chaudière au fioul. Devis clair, respect des délais, équipe propre et sympathique. Ils ont géré les démarches MaPrimeRénov' avec moi. Ma facture d'énergie a déjà bien baissé le premier mois. Investissement largement rentabilisé.",
+    text: "On voulait arrêter le fioul et passer à quelque chose de moins cher. TBP nous a bien orientés, sans chercher à nous vendre plus que nécessaire. Les travaux ont été faits dans les délais prévus et les gars étaient agréables. Depuis, on chauffe mieux et on paie beaucoup moins. On aurait dû le faire bien plus tôt.",
     rating: 5,
   },
   {
     name: "Sandrine & Luc F.",
     location: "Périgueux",
-    text: "Nous avons fait appel à TBP pour la réfection complète de notre salle de bain : dépose de l'ancienne installation, pose d'une douche à l'italienne, nouveau lavabo et robinetterie. Tout a été fait en 3 jours, avec un soin du détail remarquable. Le carrelage autour de la douche a été posé parfaitement. On est vraiment ravis du résultat, on a l'impression d'avoir une salle de bain neuve.",
+    text: "On a refait entièrement notre salle de bain avec TBP. On ne savait pas trop par où commencer mais ils ont tout géré. En trois jours c'était terminé, la douche, le lavabo, tout. On est bluffés par le résultat, c'est vraiment propre et bien fait. Les voisins ont demandé leur numéro en voyant le chantier.",
     rating: 5,
   },
   {
     name: "Christophe A.",
     location: "Ribérac",
-    text: "Fuite importante sur une canalisation extérieure enterrée un vendredi soir. TBP était là le samedi matin à 8h. Diagnostic rapide avec caméra d'inspection, réparation propre sans démolir tout le jardin. Honnêteté totale sur le devis, aucune surprise à la facture. Je les ai déjà recommandés à deux voisins qui ont été tout aussi satisfaits.",
+    text: "Un vendredi soir j'ai découvert de l'eau qui remontait dans le jardin, j'étais perdu. J'ai appelé TBP et ils étaient là le lendemain matin. Ils ont trouvé où venait le problème sans tout creuser, et réparé rapidement. Tarif correct, pas de mauvaise surprise. Je les ai déjà conseillés à deux personnes dans mon entourage.",
     rating: 5,
   },
   {
     name: "Nathalie V.",
     location: "Montpon-Ménestérol",
-    text: "Installation d'un système de domotique Legrand connecté dans notre maison : volets roulants, éclairage programmable et thermostat intelligent. TBP a su nous guider dans le choix du matériel sans nous vendre du superflu. La mise en service a été faite avec nous, application configurée sur nos téléphones. Le confort au quotidien est vraiment amélioré. Très professionnel du début à la fin.",
+    text: "On voulait rendre la maison un peu plus moderne, piloter le chauffage et les volets depuis le téléphone. TBP nous a expliqué simplement ce qui était possible et ce qui ne l'était pas. L'installation s'est faite sans galère, ils ont tout configuré avec nous avant de partir. Maintenant c'est vraiment pratique au quotidien.",
     rating: 5,
   },
 ];
