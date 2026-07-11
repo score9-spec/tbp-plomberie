@@ -25,24 +25,6 @@ export default function FloatingFAB() {
         </div>
       </div>
 
-      {/* Phone / Urgence Button */}
-      <div className="relative group">
-        <a 
-          href="tel:0760730588"
-          className="relative flex items-center justify-center w-14 h-14 bg-red-600 text-white rounded-full shadow-2xl hover:bg-red-700 transition-colors z-10"
-          aria-label="Appel d'urgence"
-        >
-          <Phone className="w-6 h-6 fill-white" />
-        </a>
-        {/* Pulse effect */}
-        <div className="absolute inset-0 rounded-full bg-red-600 animate-ping opacity-30 z-0 pointer-events-none" style={{ animationDuration: '2s' }}></div>
-        <div className="absolute inset-0 rounded-full border-2 border-red-500 animate-pulse z-0 pointer-events-none" style={{ animationDuration: '2s' }}></div>
-        {/* Desktop Tooltip */}
-        <div className="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-3 py-1.5 bg-slate-800 text-white text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl border border-slate-700 hidden md:block">
-          Appel d'urgence
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-slate-800 rotate-45 border-r border-t border-slate-700"></div>
-        </div>
-      </div>
     </div>
   );
 }
