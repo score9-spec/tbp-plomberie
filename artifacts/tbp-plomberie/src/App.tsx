@@ -11,6 +11,7 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import FloatingFAB from '@/components/FloatingFAB';
 import AlertBanner from '@/components/AlertBanner';
+import PricingSection from '@/components/PricingSection';
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
           <main>
             <HeroSection />
             <ServicesSection />
+            <PricingSection />
             <WhyUsSection />
             <TestimonialsSection />
             <ContactSection />

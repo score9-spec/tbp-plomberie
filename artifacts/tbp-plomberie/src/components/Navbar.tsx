@@ -4,6 +4,7 @@ import { Droplet, Zap, Menu, X, Phone } from 'lucide-react';
 
 const navLinks = [
   { name: 'Services', href: '#services' },
+  { name: 'Tarifs', href: '#tarifs' },
   { name: 'Pourquoi Nous', href: '#pourquoi-nous' },
   { name: 'Avis', href: '#avis' },
   { name: 'Contact', href: '#contact' },
