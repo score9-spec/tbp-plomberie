@@ -1,19 +1,33 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageCircle, Loader2 } from 'lucide-react';
 
 export default function ContactSection() {
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [nom, setNom] = useState('');
+  const [telephone, setTelephone] = useState('');
+  const [email, setEmail] = useState('');
+  const [service, setService] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus('submitting');
-    // Simulate API call
-    setTimeout(() => {
-      setFormStatus('success');
-      (e.target as HTMLFormElement).reset();
-      setTimeout(() => setFormStatus('idle'), 5000);
-    }, 1000);
+    setStatus('loading');
+    try {
+      const res = await fetch(`${import.meta.env.BASE_URL}api/devis`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nom, telephone, email, service, message }),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setNom(''); setTelephone(''); setEmail(''); setService(''); setMessage('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -28,45 +42,49 @@ export default function ContactSection() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-6xl mx-auto">
           {/* Form Side */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="bg-slate-900 rounded-3xl p-8 md:p-10 border border-slate-700 shadow-xl"
           >
-            {formStatus === 'success' ? (
-              <div className="h-full min-h-[400px] flex flex-col items-center justify-center text-center">
+            {status === 'success' ? (
+              <div className="min-h-[400px] flex flex-col items-center justify-center text-center">
                 <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
                   <CheckCircle2 className="w-10 h-10 text-green-500" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Message envoyé avec succès !</h3>
-                <p className="text-slate-400">Nous vous recontacterons très rapidement pour évaluer votre besoin.</p>
-                <button 
-                  onClick={() => setFormStatus('idle')}
+                <h3 className="text-2xl font-bold text-white mb-2">Demande envoyée !</h3>
+                <p className="text-slate-400">Nous avons bien reçu votre demande de devis et vous recontacterons très rapidement.</p>
+                <button
+                  onClick={() => setStatus('idle')}
                   className="mt-8 text-blue-400 hover:text-blue-300 font-medium"
                 >
-                  Envoyer un autre message
+                  Envoyer une autre demande
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {status === 'error' && (
+                  <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl px-4 py-3 text-sm">
+                    Une erreur est survenue. Appelez-nous directement au <a href="tel:0760730588" className="font-bold underline">07 60 73 05 88</a>.
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-slate-300">Prénom & Nom</label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      required
+                    <input
+                      type="text" id="name" required value={nom}
+                      onChange={e => setNom(e.target.value)}
                       className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                       placeholder="Jean Dupont"
                     />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="phone" className="text-sm font-medium text-slate-300">Téléphone</label>
-                    <input 
-                      type="tel" 
-                      id="phone" 
-                      required
+                    <input
+                      type="tel" id="phone" required value={telephone}
+                      onChange={e => setTelephone(e.target.value)}
                       className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                       placeholder="06 XX XX XX XX"
                     />
@@ -75,10 +93,9 @@ export default function ContactSection() {
 
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-slate-300">Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    required
+                  <input
+                    type="email" id="email" required value={email}
+                    onChange={e => setEmail(e.target.value)}
                     className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                     placeholder="jean.dupont@email.com"
                   />
@@ -86,9 +103,9 @@ export default function ContactSection() {
 
                 <div className="space-y-2">
                   <label htmlFor="service" className="text-sm font-medium text-slate-300">Type de besoin</label>
-                  <select 
-                    id="service" 
-                    required
+                  <select
+                    id="service" required value={service}
+                    onChange={e => setService(e.target.value)}
                     className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all appearance-none"
                   >
                     <option value="">Sélectionnez un service</option>
@@ -101,26 +118,23 @@ export default function ContactSection() {
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-slate-300">Message</label>
-                  <textarea 
-                    id="message" 
-                    rows={4}
-                    required
+                  <textarea
+                    id="message" rows={4} required value={message}
+                    onChange={e => setMessage(e.target.value)}
                     className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
                     placeholder="Décrivez votre besoin en quelques mots..."
-                  ></textarea>
+                  />
                 </div>
 
-                <button 
-                  type="submit" 
-                  disabled={formStatus === 'submitting'}
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl px-6 py-4 flex items-center justify-center gap-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-blue-900/30"
                 >
-                  {formStatus === 'submitting' ? (
-                    <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                  {status === 'loading' ? (
+                    <><Loader2 className="w-5 h-5 animate-spin" /> Envoi en cours…</>
                   ) : (
-                    <>
-                      Envoyer ma demande <Send className="w-4 h-4" />
-                    </>
+                    <>Envoyer ma demande <Send className="w-4 h-4" /></>
                   )}
                 </button>
               </form>
@@ -128,7 +142,7 @@ export default function ContactSection() {
           </motion.div>
 
           {/* Info Side */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -192,22 +206,22 @@ export default function ContactSection() {
                   <h4 className="text-white font-bold text-lg mb-1">Horaires</h4>
                   <p className="text-slate-400">Lun–Ven : 8h – 19h</p>
                   <p className="text-slate-400">Sam : 9h – 17h</p>
-                  <p className="text-slate-400 font-medium text-amber-500 mt-1">Dimanche : Urgences uniquement</p>
+                  <p className="text-amber-500 font-medium mt-1">Dimanche : Urgences uniquement</p>
                 </div>
               </div>
             </div>
 
             {/* Map */}
             <div className="flex-1 min-h-[250px] rounded-3xl overflow-hidden border border-slate-700 bg-slate-900 shadow-lg relative isolate">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173649.2!2d0.7558!3d45.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ff05b4ce15d5a1%3A0x40affd7a5f2e2540!2sDordogne!5e0!3m2!1sfr!2sfr!4v1625000000001!5m2!1sfr!2sfr" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, position: 'absolute', inset: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(80%) contrast(90%) grayscale(60%)' }} 
-                allowFullScreen={false} 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173649.2!2d0.7558!3d45.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ff05b4ce15d5a1%3A0x40affd7a5f2e2540!2sDordogne!5e0!3m2!1sfr!2sfr!4v1625000000001!5m2!1sfr!2sfr"
+                width="100%"
+                height="100%"
+                style={{ border: 0, position: 'absolute', inset: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(80%) contrast(90%) grayscale(60%)' }}
+                allowFullScreen={false}
                 loading="lazy"
                 title="Carte d'intervention TBP Plomberie en Dordogne"
-              ></iframe>
+              />
             </div>
           </motion.div>
         </div>
