@@ -204,9 +204,8 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-lg mb-1">Horaires</h4>
-                  <p className="text-slate-400">Lun–Ven : 8h – 19h</p>
-                  <p className="text-slate-400">Sam : 9h – 17h</p>
-                  <p className="text-amber-500 font-medium mt-1">Dimanche : Urgences uniquement</p>
+                  <p className="text-amber-500 font-bold text-lg">24h/24 — 7j/7</p>
+                  <p className="text-slate-400 text-sm mt-1">Disponible tous les jours, même les jours fériés</p>
                 </div>
               </div>
             </div>
