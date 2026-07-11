@@ -1,0 +1,47 @@
+"Agis en tant qu'expert développeur web full-stack et designer UX/UI. Crée un site web vitrine moderne, ultra-performant et responsive pour un artisan Plombier-Électricien indépendant nommé TBP Plomberie. Le design doit inspirer la confiance, le professionnalisme et la rapidité, avec une approche très moderne pour l'année 2026.
+Stack Technique :
+
+Frontend : React.js avec Vite (pour la rapidité) + Tailwind CSS pour le styling.
+Animations : Framer Motion (pour des transitions fluides et modernes).
+Icônes : Lucide React.
+Formulaire : Préparer un formulaire de contact fonctionnel avec validation.
+
+Identité Visuelle & Design :
+
+Nom de l'entreprise : TBP Plomberie
+Ville d'intervention : [Remplace par la ville, ex: Lyon et 30km alentours]
+Couleurs : Un bleu profond (pour l'eau/plomberie) et un jaune/orange vif (pour l'électricité/énergie) sur une base foncée (slate/dark mode) et blanche. Le design doit être épuré, avec des cartes aux coins arrondis, des effets de survol subtils et des ombres douces.
+Typographie : Utiliser une police moderne comme 'Inter' ou 'Poppins'.
+
+Structure des Sections (Single Page Application avec ancres) :
+
+Navbar (Sticky) : Logo (TBP Plomberie), liens vers les sections, un bouton "Urgence : [Numéro de téléphone]" bien visible, et un bouton "Devis Gratuit".
+Hero Section : 
+Titre accrocheur : "TBP Plomberie, votre expert plombier-électricien à [Ville]". 
+Sous-titre : "Interventions rapides, installations modernes et solutions économes en énergie."
+Un formulaire ultra-rapide en une ligne pour demander un rappel (Nom + Téléphone + Bouton "Être rappelé").
+Image de fond de haute qualité (via Unsplash) ou illustration abstraite moderne.
+
+
+Section Services (avec icônes et cartes animées) :
+Plomberie : Dépannage fuites, installation salle de bain, débouchage.
+Électricité : Mise aux normes, tableau électrique, dépannage urgent.
+Solutions 2026 (Mise en avant) : Installation de pompes à chaleur, domotique (maison connectée), et bornes de recharge pour véhicules électriques (IRVE).
+
+
+Section "Pourquoi nous choisir ?" : 
+3 colonnes avec des compteurs animés (ex: "15 ans d'expérience", "2500+ interventions", "100% satisfaction").
+Mise en avant de la certification RGE (si applicable) et du respect des normes NF C 15-100.
+
+
+Section Témoignages (Avis Clients) : Un carrousel ou une grille de 3 avis clients fictifs mais réalistes avec des étoiles de notation.
+Section Devis & Contact : Un formulaire complet (Nom, Email, Téléphone, Type de besoin [Plomberie/Électricie/Autre], Message) à gauche, et à droite les coordonnées, horaires d'ouverture, et une carte (via iframe Google Maps) centrée sur [Ville].
+Footer : Liens utiles, mentions légales, numéro SIREN (placeholder), et liens vers les réseaux sociaux (Facebook, Instagram).
+
+Fonctionnalités Avancées :
+
+Un bouton flottant (FAB) en bas à droite pour un appel d'urgence direct sur mobile.
+Design 100% "Mobile-First" car beaucoup de clients cherchent un plombier en urgence sur leur téléphone.
+Balises Meta optimisées pour le SEO local (titre, description avec la ville et le métier).
+
+Génère d'abord la structure du projet, puis crée les composants un par un avec un design époustouflant. Assure-toi que le code est propre, commenté et prêt à être lancé avec npm run dev."**

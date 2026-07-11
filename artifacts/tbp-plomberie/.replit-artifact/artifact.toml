@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "TBP Plomberie"
+version = "1.0.0"
+id = "artifacts/tbp-plomberie"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25126
+
+[services.development]
+run = "pnpm --filter @workspace/tbp-plomberie run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tbp-plomberie", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/tbp-plomberie/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25126"
+BASE_PATH = "/"
