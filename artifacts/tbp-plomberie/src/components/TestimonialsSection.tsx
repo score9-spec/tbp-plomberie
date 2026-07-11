@@ -6,21 +6,39 @@ const testimonials = [
   {
     name: "Marie-Claire D.",
     location: "Périgueux",
-    text: "Intervention extrêmement rapide un dimanche matin pour une fuite importante. Le plombier a été professionnel, rassurant et le tarif était annoncé d'avance. Je recommande les yeux fermés.",
+    text: "Intervention extrêmement rapide un dimanche matin pour une fuite importante sous l'évier de la cuisine. Arrivée en moins de 45 minutes, le problème réglé en une heure. Le plombier a été professionnel, rassurant, et le tarif était annoncé d'avance sans mauvaise surprise. Je recommande les yeux fermés à toute ma famille.",
     rating: 5,
   },
   {
     name: "Thomas B.",
     location: "Bergerac",
-    text: "Rénovation complète de mon tableau électrique et installation d'une borne de recharge pour ma voiture. Travail impeccable, propre, et de très bons conseils. Un vrai artisan !",
+    text: "Rénovation complète de mon tableau électrique mis aux normes NF C 15-100, plus installation d'une borne de recharge pour ma voiture électrique. Travail impeccable, chantier propre, câblage soigné. De très bons conseils sur les aides disponibles (CEE). Un vrai artisan sérieux, pas un simple dépanneur.",
     rating: 5,
   },
   {
     name: "Jean-Pierre M.",
     location: "Sarlat",
-    text: "Mise en place d'une pompe à chaleur avec TBP. Devis clair, respect des délais, équipe sympathique. Ma facture d'énergie a déjà bien baissé. Merci pour votre sérieux.",
+    text: "Mise en place d'une pompe à chaleur air/eau avec TBP pour remplacer ma vieille chaudière au fioul. Devis clair, respect des délais, équipe propre et sympathique. Ils ont géré les démarches MaPrimeRénov' avec moi. Ma facture d'énergie a déjà bien baissé le premier mois. Investissement largement rentabilisé.",
     rating: 5,
-  }
+  },
+  {
+    name: "Sandrine & Luc F.",
+    location: "Périgueux",
+    text: "Nous avons fait appel à TBP pour la réfection complète de notre salle de bain : dépose de l'ancienne installation, pose d'une douche à l'italienne, nouveau lavabo et robinetterie. Tout a été fait en 3 jours, avec un soin du détail remarquable. Le carrelage autour de la douche a été posé parfaitement. On est vraiment ravis du résultat, on a l'impression d'avoir une salle de bain neuve.",
+    rating: 5,
+  },
+  {
+    name: "Christophe A.",
+    location: "Ribérac",
+    text: "Fuite importante sur une canalisation extérieure enterrée un vendredi soir. TBP était là le samedi matin à 8h. Diagnostic rapide avec caméra d'inspection, réparation propre sans démolir tout le jardin. Honnêteté totale sur le devis, aucune surprise à la facture. Je les ai déjà recommandés à deux voisins qui ont été tout aussi satisfaits.",
+    rating: 5,
+  },
+  {
+    name: "Nathalie V.",
+    location: "Montpon-Ménestérol",
+    text: "Installation d'un système de domotique Legrand connecté dans notre maison : volets roulants, éclairage programmable et thermostat intelligent. TBP a su nous guider dans le choix du matériel sans nous vendre du superflu. La mise en service a été faite avec nous, application configurée sur nos téléphones. Le confort au quotidien est vraiment amélioré. Très professionnel du début à la fin.",
+    rating: 5,
+  },
 ];
 
 export default function TestimonialsSection() {
@@ -34,7 +52,7 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
