@@ -10,7 +10,6 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import FloatingFAB from '@/components/FloatingFAB';
-import AlertBanner from '@/components/AlertBanner';
 import PricingSection from '@/components/PricingSection';
 
 const queryClient = new QueryClient();
@@ -20,7 +19,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="min-h-screen bg-slate-900 text-slate-50 font-sans selection:bg-blue-600 selection:text-white">
-          <AlertBanner />
           <Navbar />
           <main>
             <HeroSection />
