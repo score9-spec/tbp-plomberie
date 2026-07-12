@@ -176,7 +176,7 @@ router.post("/devis", async (req, res) => {
           text: clientText,
           attachments: [
             {
-              filename: `${numero}-tbp-plomberie.pdf`,
+              filename: `TBP-${new Date().toISOString().slice(0, 10)}.pdf`,
               content: pdf,
               contentType: "application/pdf",
             },
