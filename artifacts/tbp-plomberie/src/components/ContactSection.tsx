@@ -243,13 +243,13 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-6 bg-slate-900/50 rounded-2xl border border-slate-700">
+              <div className="sm:col-span-2 lg:col-span-1 flex items-start gap-4 p-6 bg-slate-900/50 rounded-2xl border border-slate-700 min-w-0">
                 <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0">
                   <Mail className="w-6 h-6 text-blue-500" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h4 className="text-white font-bold text-lg mb-1">Email</h4>
-                  <a href="mailto:contact@plombier-electricien-dordogne.fr" className="text-slate-300 hover:text-white transition-colors break-all">contact@plombier-electricien-dordogne.fr</a>
+                  <a href="mailto:contact@plombier-electricien-dordogne.fr" className="text-slate-300 hover:text-white transition-colors text-sm sm:text-base whitespace-nowrap">contact@plombier-electricien-dordogne.fr</a>
                 </div>
               </div>
 
