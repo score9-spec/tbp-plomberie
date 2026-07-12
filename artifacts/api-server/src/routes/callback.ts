@@ -61,12 +61,19 @@ router.post("/callback", async (req, res) => {
     </div>
   `;
 
+  const text = [
+    `Nouvelle demande de rappel`,
+    `Nom: ${nom}`,
+    `Téléphone: ${telephone}`,
+    `Motif: ${motif || "Non précisé"}`,
+  ].join("\n");
+
   try {
     await transporter.sendMail({
-      from: `"TBP Plomberie Site" <${gmailUser}>`,
       to: gmailUser,
       subject: `🔔 Rappel demandé — ${nom} (${telephone})`,
       html,
+      text,
     });
     await logSubmission({
       type: "callback",

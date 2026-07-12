@@ -147,22 +147,13 @@ router.post("/devis", async (req, res) => {
 
   try {
     const internalResult = await transporter.sendMail({
-      from: `"TBP Plomberie Site" <${gmailUser}>`,
       to: gmailUser,
       replyTo: email || undefined,
       subject: `Devis demandé — ${nom} - ${serviceLabel}`,
       html,
       text: internalText,
     });
-    logger.info(
-      {
-        messageId: internalResult.messageId,
-        accepted: internalResult.accepted,
-        rejected: internalResult.rejected,
-        response: internalResult.response,
-      },
-      "Email interne envoyé (notification tbpplomberie33)",
-    );
+    logger.info({ id: internalResult.id }, "Email interne envoyé (notification tbpplomberie33)");
 
     if (email) {
       try {
@@ -179,7 +170,6 @@ router.post("/devis", async (req, res) => {
         });
 
         const clientResult = await transporter.sendMail({
-          from: `"TBP Plomberie" <${gmailUser}>`,
           to: email,
           subject: `Votre devis TBP Plomberie`,
           html: clientHtml,
@@ -192,16 +182,7 @@ router.post("/devis", async (req, res) => {
             },
           ],
         });
-        logger.info(
-          {
-            to: email,
-            messageId: clientResult.messageId,
-            accepted: clientResult.accepted,
-            rejected: clientResult.rejected,
-            response: clientResult.response,
-          },
-          "Email client (devis PDF) envoyé",
-        );
+        logger.info({ to: email, id: clientResult.id }, "Email client (devis PDF) envoyé");
       } catch (err) {
         logger.error({ err, to: email }, "Erreur envoi email de confirmation au client");
       }
