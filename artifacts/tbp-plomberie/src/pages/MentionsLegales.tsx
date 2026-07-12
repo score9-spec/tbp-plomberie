@@ -14,7 +14,7 @@ export default function MentionsLegales() {
           <li>SIREN : 820 633 774</li>
           <li>Adresse : 3020 route des fontaines, Minzac, 24610</li>
           <li>Téléphone : 07 60 73 05 88</li>
-          <li>Email : tbpplomberie33@gmail.com</li>
+          <li>Email : contact@plombier-electricien-dordogne.fr</li>
           <li>Responsable de la publication : TBP Plomberie</li>
         </ul>
       </section>
@@ -75,7 +75,7 @@ export default function MentionsLegales() {
         <p>
           Pour toute question relative à ces mentions légales, vous pouvez nous contacter au
           07 60 73 05 88 ou par email à{' '}
-          <a href="mailto:tbpplomberie33@gmail.com">tbpplomberie33@gmail.com</a>.
+          <a href="mailto:contact@plombier-electricien-dordogne.fr">contact@plombier-electricien-dordogne.fr</a>.
         </p>
       </section>
     </LegalPageLayout>

@@ -9,7 +9,7 @@ export default function PolitiqueConfidentialite() {
         <p>
           TBP Plomberie (SIREN 820 633 774), 3020 route des fontaines, Minzac, 24610, est
           responsable du traitement des données collectées via ce site. Contact :{' '}
-          <a href="mailto:tbpplomberie33@gmail.com">tbpplomberie33@gmail.com</a> — 07 60 73 05 88.
+          <a href="mailto:contact@plombier-electricien-dordogne.fr">contact@plombier-electricien-dordogne.fr</a> — 07 60 73 05 88.
         </p>
       </section>
 
@@ -69,7 +69,7 @@ export default function PolitiqueConfidentialite() {
           Informatique et Libertés, vous disposez d'un droit d'accès, de rectification,
           d'effacement, de limitation et d'opposition concernant vos données personnelles. Vous
           pouvez exercer ces droits en nous contactant à{' '}
-          <a href="mailto:tbpplomberie33@gmail.com">tbpplomberie33@gmail.com</a> ou au{' '}
+          <a href="mailto:contact@plombier-electricien-dordogne.fr">contact@plombier-electricien-dordogne.fr</a> ou au{' '}
           07 60 73 05 88.
         </p>
       </section>

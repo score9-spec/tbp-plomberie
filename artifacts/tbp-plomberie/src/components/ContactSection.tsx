@@ -249,7 +249,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-lg mb-1">Email</h4>
-                  <a href="mailto:tbpplomberie33@gmail.com" className="text-slate-300 hover:text-white transition-colors break-all">tbpplomberie33@gmail.com</a>
+                  <a href="mailto:contact@plombier-electricien-dordogne.fr" className="text-slate-300 hover:text-white transition-colors break-all">contact@plombier-electricien-dordogne.fr</a>
                 </div>
               </div>
 
