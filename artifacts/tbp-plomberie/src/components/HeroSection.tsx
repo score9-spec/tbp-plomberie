@@ -2,21 +2,23 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
+import { apiUrl } from '@/lib/api';
 
 export default function HeroSection() {
   const [nom, setNom] = useState('');
   const [telephone, setTelephone] = useState('');
   const [motif, setMotif] = useState('');
+  const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
     try {
-      const res = await fetch(`${import.meta.env.BASE_URL}api/callback`, {
+      const res = await fetch(apiUrl('callback'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nom, telephone, motif }),
+        body: JSON.stringify({ nom, telephone, motif, website }),
       });
       if (res.ok) {
         setStatus('success');
@@ -88,6 +90,16 @@ export default function HeroSection() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <input
+                type="text"
+                name="website"
+                value={website}
+                onChange={e => setWebsite(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute -left-[9999px] w-px h-px opacity-0"
+              />
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"

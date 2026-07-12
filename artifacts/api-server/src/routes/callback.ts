@@ -1,26 +1,39 @@
 import { Router } from "express";
 import nodemailer from "nodemailer";
 import { logger } from "../lib/logger";
+import { callbackSchema } from "../lib/validation";
+import { logSubmission } from "../lib/submissionLog";
 
 const router = Router();
 
 router.post("/callback", async (req, res) => {
-  const { nom, telephone, motif } = req.body as {
-    nom?: string;
-    telephone?: string;
-    motif?: string;
-  };
-
-  if (!nom || !telephone) {
-    res.status(400).json({ error: "Nom et téléphone requis." });
+  const parsed = callbackSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: "Données invalides." });
     return;
   }
+
+  if (parsed.data.website) {
+    // Honeypot tripped — pretend success so the bot doesn't learn it was caught.
+    res.json({ ok: true });
+    return;
+  }
+
+  const { nom, telephone, motif } = parsed.data;
 
   const gmailUser = "tbpplomberie33@gmail.com";
   const gmailPass = process.env["GMAIL_APP_PASSWORD"];
 
   if (!gmailPass) {
     logger.warn("GMAIL_APP_PASSWORD non configuré — email non envoyé");
+    await logSubmission({
+      type: "callback",
+      receivedAt: new Date().toISOString(),
+      nom,
+      telephone,
+      message: motif,
+      emailSent: false,
+    });
     // On répond quand même OK côté client pour ne pas bloquer
     res.json({ ok: true });
     return;
@@ -61,9 +74,25 @@ router.post("/callback", async (req, res) => {
       subject: `🔔 Rappel demandé — ${nom} (${telephone})`,
       html,
     });
+    await logSubmission({
+      type: "callback",
+      receivedAt: new Date().toISOString(),
+      nom,
+      telephone,
+      message: motif,
+      emailSent: true,
+    });
     logger.info({ nom, telephone }, "Email de rappel envoyé");
     res.json({ ok: true });
   } catch (err) {
+    await logSubmission({
+      type: "callback",
+      receivedAt: new Date().toISOString(),
+      nom,
+      telephone,
+      message: motif,
+      emailSent: false,
+    });
     logger.error({ err }, "Erreur envoi email");
     res.status(500).json({ error: "Erreur lors de l'envoi de l'email." });
   }

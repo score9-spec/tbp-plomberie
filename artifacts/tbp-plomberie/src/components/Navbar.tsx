@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Droplet, Zap, Menu, X, Phone } from 'lucide-react';
+import { Zap, Menu, X, Phone } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 const navLinks = [
   { name: 'Services', href: '#services' },
+  { name: 'Réalisations', href: '#realisations' },
   { name: 'Tarifs', href: '#tarifs' },
   { name: 'Pourquoi Nous', href: '#pourquoi-nous' },
   { name: 'Avis', href: '#avis' },
@@ -74,14 +76,11 @@ export default function Navbar() {
 
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 group shrink-0 z-50 relative">
-              <div className="flex -space-x-1">
-                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
-                  <Droplet className="w-4 h-4 text-white" />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center relative z-0 group-hover:scale-110 transition-transform delay-75">
-                  <Zap className="w-4 h-4 text-white" />
-                </div>
-              </div>
+              <img
+                src={logo}
+                alt="TBP Plomberie"
+                className="w-9 h-9 rounded-full object-cover group-hover:scale-110 transition-transform"
+              />
               <span className="text-lg font-bold tracking-tight text-white ml-1 whitespace-nowrap">
                 TBP Plomberie
               </span>

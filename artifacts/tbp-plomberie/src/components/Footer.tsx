@@ -1,6 +1,7 @@
 import React from 'react';
-import { Droplet, Zap } from 'lucide-react';
-import { SiFacebook, SiInstagram } from 'react-icons/si';
+import { Link } from 'wouter';
+import { SiTiktok } from 'react-icons/si';
+import logo from '@/assets/logo.png';
 
 export default function Footer() {
   return (
@@ -10,14 +11,7 @@ export default function Footer() {
           
           <div className="flex flex-col items-center md:items-start gap-4 max-w-sm text-center md:text-left">
             <a href="#" className="flex items-center gap-2 group">
-              <div className="flex -space-x-1">
-                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
-                  <Droplet className="w-4 h-4 text-white" />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-white" />
-                </div>
-              </div>
+              <img src={logo} alt="TBP Plomberie" className="w-9 h-9 rounded-full object-cover" />
               <span className="text-xl font-bold tracking-tight text-white ml-1">
                 TBP Plomberie
               </span>
@@ -28,21 +22,18 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors border border-slate-700" aria-label="Facebook">
-              <SiFacebook className="w-4 h-4" />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors border border-slate-700" aria-label="Instagram">
-              <SiInstagram className="w-4 h-4" />
+            <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-100 hover:text-slate-900 transition-colors border border-slate-700" aria-label="TikTok">
+              <SiTiktok className="w-4 h-4" />
             </a>
           </div>
 
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-slate-800 text-sm">
-          <p>© 2026 TBP Plomberie – SIREN : XXX XXX XXX</p>
+          <p>© 2026 TBP Plomberie – SIREN : 820 633 774</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Mentions Légales</a>
-            <a href="#" className="hover:text-white transition-colors">Politique de Confidentialité</a>
+            <Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions Légales</Link>
+            <Link href="/politique-confidentialite" className="hover:text-white transition-colors">Politique de Confidentialité</Link>
           </div>
         </div>
       </div>

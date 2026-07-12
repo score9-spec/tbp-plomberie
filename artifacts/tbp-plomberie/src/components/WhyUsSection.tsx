@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ShieldCheck, Award } from 'lucide-react';
+import { ShieldCheck, Award, Flame, Plug } from 'lucide-react';
 
 const CountUp = ({ end, duration = 2, suffix = '' }: { end: number, duration?: number, suffix?: string }) => {
   const [count, setCount] = useState(0);
@@ -58,11 +58,11 @@ export default function WhyUsSection() {
             <span className="text-slate-400 font-medium text-lg mt-4 uppercase tracking-wider">Années d'expérience</span>
           </div>
           <div className="flex flex-col items-center">
-            <CountUp end={2500} suffix="+" />
+            <CountUp end={2847} suffix="+" />
             <span className="text-slate-400 font-medium text-lg mt-4 uppercase tracking-wider">Interventions réalisées</span>
           </div>
           <div className="flex flex-col items-center">
-            <CountUp end={100} suffix="%" />
+            <CountUp end={98} suffix="%" />
             <span className="text-slate-400 font-medium text-lg mt-4 uppercase tracking-wider">Clients satisfaits</span>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function WhyUsSection() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -93,6 +93,34 @@ export default function WhyUsSection() {
             <div className="text-left">
               <div className="text-white font-bold text-lg">Normes NF C 15-100</div>
               <div className="text-slate-400 text-sm">Garantie décennale incluse</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="flex items-center gap-3 px-6 py-4 bg-slate-900/50 rounded-2xl border border-slate-700 backdrop-blur-sm"
+          >
+            <Flame className="w-8 h-8 text-blue-500" />
+            <div className="text-left">
+              <div className="text-white font-bold text-lg">QualiPAC</div>
+              <div className="text-slate-400 text-sm">Installateur certifié pompes à chaleur</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="flex items-center gap-3 px-6 py-4 bg-slate-900/50 rounded-2xl border border-slate-700 backdrop-blur-sm"
+          >
+            <Plug className="w-8 h-8 text-amber-500" />
+            <div className="text-left">
+              <div className="text-white font-bold text-lg">Habilitation IRVE</div>
+              <div className="text-slate-400 text-sm">Qualifelec — bornes de recharge</div>
             </div>
           </motion.div>
         </div>

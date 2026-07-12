@@ -47,3 +47,11 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# env files
+.env
+.env.local
+.env.*.local
+
+# local data (contains customer PII, never commit)
+artifacts/api-server/data/

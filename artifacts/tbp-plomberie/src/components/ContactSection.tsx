@@ -1,27 +1,70 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageCircle, Loader2 } from 'lucide-react';
+import { apiUrl } from '@/lib/api';
+
+const PRESTATIONS = [
+  {
+    category: 'plomberie',
+    categoryLabel: 'Plomberie',
+    items: [
+      'Réparation fuite de tuyau',
+      'Débouchage WC',
+      'Débouchage canalisation',
+      "Réparation ballon d'eau chaude",
+      'Recherche de fuite non destructive',
+      'Réparation fuite chasse d\'eau',
+      "Installation d'un robinet",
+      "Installation ballon d'eau chaude",
+      'Installation WC classique',
+      'Réparation fuite de douche',
+    ],
+  },
+  {
+    category: 'electricite',
+    categoryLabel: 'Électricité',
+    items: [
+      'Remise aux normes tableau électrique',
+      'Réparation de prise murale',
+      "Réparation d'un tableau électrique",
+      'Recherche de panne électrique',
+      'Panne électrique inconnue',
+    ],
+  },
+  {
+    category: 'solutions2026',
+    categoryLabel: 'Solutions 2026',
+    items: ['Pompe à chaleur (PAC)', 'Borne IRVE', 'Domotique & maison connectée'],
+  },
+  {
+    category: 'autre',
+    categoryLabel: 'Autre',
+    items: ['Autre demande'],
+  },
+] as const;
 
 export default function ContactSection() {
   const [nom, setNom] = useState('');
   const [telephone, setTelephone] = useState('');
   const [email, setEmail] = useState('');
-  const [service, setService] = useState('');
+  const [prestation, setPrestation] = useState('');
   const [message, setMessage] = useState('');
+  const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
     try {
-      const res = await fetch(`${import.meta.env.BASE_URL}api/devis`, {
+      const [service, prestationLabel] = prestation.split('::');
+      const res = await fetch(apiUrl('devis'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nom, telephone, email, service, message }),
+        body: JSON.stringify({ nom, telephone, email, service, prestation: prestationLabel, message, website }),
       });
       if (res.ok) {
         setStatus('success');
-        setNom(''); setTelephone(''); setEmail(''); setService(''); setMessage('');
+        setNom(''); setTelephone(''); setEmail(''); setPrestation(''); setMessage('');
       } else {
         setStatus('error');
       }
@@ -64,6 +107,16 @@ export default function ContactSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input
+                  type="text"
+                  name="website"
+                  value={website}
+                  onChange={e => setWebsite(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] w-px h-px opacity-0"
+                />
                 {status === 'error' && (
                   <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl px-4 py-3 text-sm">
                     Une erreur est survenue. Appelez-nous directement au <a href="tel:0760730588" className="font-bold underline">07 60 73 05 88</a>.
@@ -102,17 +155,20 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="service" className="text-sm font-medium text-slate-300">Type de besoin</label>
+                  <label htmlFor="prestation" className="text-sm font-medium text-slate-300">Prestation souhaitée</label>
                   <select
-                    id="service" required value={service}
-                    onChange={e => setService(e.target.value)}
+                    id="prestation" required value={prestation}
+                    onChange={e => setPrestation(e.target.value)}
                     className="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all appearance-none"
                   >
-                    <option value="">Sélectionnez un service</option>
-                    <option value="plomberie">Plomberie (Dépannage, Installation)</option>
-                    <option value="electricite">Électricité (Mise aux normes, Tableau)</option>
-                    <option value="solutions2026">Solutions 2026 (PAC, IRVE, Domotique)</option>
-                    <option value="autre">Autre demande</option>
+                    <option value="">Sélectionnez une prestation</option>
+                    {PRESTATIONS.map(group => (
+                      <optgroup key={group.category} label={group.categoryLabel}>
+                        {group.items.map(item => (
+                          <option key={item} value={`${group.category}::${item}`}>{item}</option>
+                        ))}
+                      </optgroup>
+                    ))}
                   </select>
                 </div>
 
@@ -184,7 +240,6 @@ export default function ContactSection() {
                   >
                     Envoyer un message
                   </a>
-                  <p className="text-slate-400 text-sm mt-2">+33 7 49 69 37 08</p>
                 </div>
               </div>
 

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: tbp-plomberie-api
+    runtime: node
+    plan: free
+    buildCommand: corepack enable && corepack prepare pnpm@10.32.1 --activate && pnpm install --frozen-lockfile && pnpm --filter @workspace/api-server run build
+    startCommand: node artifacts/api-server/dist/index.mjs
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: ALLOWED_ORIGIN
+        sync: false
