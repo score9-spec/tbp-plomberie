@@ -1,5 +1,10 @@
+import dns from "node:dns";
 import app from "./app";
 import { logger } from "./lib/logger";
+
+// Some hosts (e.g. Render) have no IPv6 egress; Node's default DNS order can
+// still pick the AAAA record for smtp.gmail.com and fail with ENETUNREACH.
+dns.setDefaultResultOrder("ipv4first");
 
 const rawPort = process.env["PORT"];
 
