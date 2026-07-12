@@ -7,6 +7,10 @@ import { logger } from "./lib/logger";
 
 const app: Express = express();
 
+// Render (and most hosts) sit behind a reverse proxy that sets X-Forwarded-For;
+// without this, express-rate-limit can't reliably identify the client IP.
+app.set("trust proxy", 1);
+
 const formLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 5,
