@@ -107,7 +107,7 @@ export default function HeroSection() {
                   required
                   value={nom}
                   onChange={e => setNom(e.target.value)}
-                  className="flex-1 bg-slate-900/60 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="flex-1 min-w-0 bg-slate-900/60 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                 />
                 <input
                   type="tel"
@@ -115,7 +115,7 @@ export default function HeroSection() {
                   required
                   value={telephone}
                   onChange={e => setTelephone(e.target.value)}
-                  className="flex-1 bg-slate-900/60 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="flex-1 min-w-0 bg-slate-900/60 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                 />
               </div>
               <input
