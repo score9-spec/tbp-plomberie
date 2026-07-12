@@ -3,7 +3,7 @@ import LegalPageLayout from './LegalPageLayout';
 
 export default function MentionsLegales() {
   return (
-    <LegalPageLayout title="Mentions Légales" updatedAt="11 juillet 2026">
+    <LegalPageLayout title="Mentions Légales" updatedAt="12 juillet 2026">
       <section>
         <h2>Éditeur du site</h2>
         <p>
@@ -22,7 +22,14 @@ export default function MentionsLegales() {
       <section>
         <h2>Hébergement</h2>
         <p>
-          L'hébergeur du site sera communiqué dans une prochaine mise à jour de cette page.
+          Le site (frontend) est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789,
+          États-Unis —{' '}
+          <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">vercel.com</a>.
+        </p>
+        <p>
+          Le serveur applicatif (API) est hébergé par Render Services, Inc., 525 Brannan Street,
+          Suite 300, San Francisco, CA 94107, États-Unis —{' '}
+          <a href="https://render.com" target="_blank" rel="noopener noreferrer">render.com</a>.
         </p>
       </section>
 

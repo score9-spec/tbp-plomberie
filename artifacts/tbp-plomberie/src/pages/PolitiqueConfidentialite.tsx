@@ -3,7 +3,7 @@ import LegalPageLayout from './LegalPageLayout';
 
 export default function PolitiqueConfidentialite() {
   return (
-    <LegalPageLayout title="Politique de Confidentialité" updatedAt="11 juillet 2026">
+    <LegalPageLayout title="Politique de Confidentialité" updatedAt="12 juillet 2026">
       <section>
         <h2>Responsable du traitement</h2>
         <p>
@@ -44,9 +44,12 @@ export default function PolitiqueConfidentialite() {
       <section>
         <h2>Destinataires des données</h2>
         <p>
-          Vos données sont reçues par TBP Plomberie via un envoi d'email utilisant les services de
-          messagerie de Google (Gmail), qui agit en tant que sous-traitant technique pour
-          l'acheminement de ces emails. Aucune autre entreprise tierce n'a accès à vos données.
+          Vos données sont reçues par TBP Plomberie via un envoi d'email utilisant Resend, un
+          service d'acheminement d'emails transactionnels, qui agit en tant que sous-traitant
+          technique. Le site est hébergé par Vercel (frontend) et Render (serveur applicatif) — voir
+          les{' '}
+          <a href="/mentions-legales">mentions légales</a> pour le détail. Aucune autre entreprise
+          tierce n'a accès à vos données.
         </p>
       </section>
 
