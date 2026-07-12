@@ -1,9 +1,9 @@
 import { Router } from "express";
-import nodemailer from "nodemailer";
 import { logger } from "../lib/logger";
 import { generateDevisPdf } from "../lib/devisPdf";
 import { devisSchema } from "../lib/validation";
 import { logSubmission } from "../lib/submissionLog";
+import { createMailer, gmailUser } from "../lib/mailer";
 
 const router = Router();
 
@@ -44,10 +44,9 @@ router.post("/devis", async (req, res) => {
 
   const { nom, telephone, email, service, prestation, message } = parsed.data;
 
-  const gmailUser = "tbpplomberie33@gmail.com";
-  const gmailPass = process.env["GMAIL_APP_PASSWORD"];
+  const transporter = createMailer();
 
-  if (!gmailPass) {
+  if (!transporter) {
     logger.warn("GMAIL_APP_PASSWORD non configuré — email non envoyé");
     await logSubmission({
       type: "devis",
@@ -109,11 +108,6 @@ router.post("/devis", async (req, res) => {
       </p>
     </div>
   `;
-
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user: gmailUser, pass: gmailPass },
-  });
 
   const categoryTarifs = service ? tarifs[service] : undefined;
   const matchedTarif = categoryTarifs?.find((t) => t.label === prestation);

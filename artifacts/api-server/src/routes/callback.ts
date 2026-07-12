@@ -1,8 +1,8 @@
 import { Router } from "express";
-import nodemailer from "nodemailer";
 import { logger } from "../lib/logger";
 import { callbackSchema } from "../lib/validation";
 import { logSubmission } from "../lib/submissionLog";
+import { createMailer, gmailUser } from "../lib/mailer";
 
 const router = Router();
 
@@ -21,10 +21,9 @@ router.post("/callback", async (req, res) => {
 
   const { nom, telephone, motif } = parsed.data;
 
-  const gmailUser = "tbpplomberie33@gmail.com";
-  const gmailPass = process.env["GMAIL_APP_PASSWORD"];
+  const transporter = createMailer();
 
-  if (!gmailPass) {
+  if (!transporter) {
     logger.warn("GMAIL_APP_PASSWORD non configuré — email non envoyé");
     await logSubmission({
       type: "callback",
@@ -38,11 +37,6 @@ router.post("/callback", async (req, res) => {
     res.json({ ok: true });
     return;
   }
-
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user: gmailUser, pass: gmailPass },
-  });
 
   const html = `
     <div style="font-family:sans-serif;max-width:520px;margin:0 auto;background:#0f172a;color:#e2e8f0;padding:32px;border-radius:12px;">
